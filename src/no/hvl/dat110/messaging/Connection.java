@@ -45,7 +45,7 @@ public class Connection {
 		}
 		
 		throw new RuntimeException("not yet implemented"); //Hva skal vi gjøre med denne David?
-		//Kanskje om port er i bruk eller ingen server tilgjengelig...
+		//Kanskje om port er i bruk eller ingen server tilgjengelig....
 		
 		
 	}
