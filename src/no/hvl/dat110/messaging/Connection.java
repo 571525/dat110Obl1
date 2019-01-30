@@ -32,18 +32,33 @@ public class Connection {
 
 		// TODO
 		// encapsulate the data contained in the message and write to the output stream
-
-		throw new RuntimeException("not yet implemented");
-
+		
+		try {
+		outStream = new DataOutputStream(socket.getOutputStream());
+		outStream.write(message.getData());
+		outStream.flush(); //Sending off the data
+		
+		outStream.close();
+		}
+		catch (IOException ex) {
+			System.out.println("Send: " + ex.getMessage());
+		}
+		
+		throw new RuntimeException("not yet implemented"); //Hva skal vi gjøre med denne David?
+		//Kanskje om port er i bruk eller ingen server tilgjengelig...
+		
+		
 	}
 
 	public Message receive() {
-
+		//SEGMENTSIZE = 128 (128 bytes)
 		Message message;
 		byte[] recvbuf;
 
+
 		// TODO
 		// read a segment from the input stream and decapsulate into message
+		
 
 		if (true) {
 			throw new RuntimeException("not yet implemented");
