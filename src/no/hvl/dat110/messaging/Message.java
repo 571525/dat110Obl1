@@ -1,13 +1,26 @@
 package no.hvl.dat110.messaging;
 
 import java.util.Arrays;
+import java.util.stream.*;
 
 public class Message {
 
 	private byte[] payload;
 
-	public Message(byte[] payload) {
-		this.payload = payload; // TODO: check for length within boundary
+	/**
+	 * Checks if the payload is longer than 127 bytes, if it is it cuts all bytes
+	 * from 128 and forward. 
+	 * 
+	 * @param payload
+	 */
+	public Message(byte[] payload) {	
+		if (payload.length >= MessageConfig.SEGMENTSIZE) {
+			this.payload = new byte[128];
+			for (int i = 0; i < 127; i++)
+				this.payload[i] = payload[i];
+		} else {
+			this.payload = payload;
+		}
 	}
 
 	public Message() {
@@ -15,30 +28,34 @@ public class Message {
 	}
 
 	public byte[] getData() {
-		return this.payload; 
+		return this.payload;
 	}
 
 	public byte[] encapsulate() {
-		
-		byte[] encoded;
-		
+
+		byte[] encoded = new byte[MessageConfig.SEGMENTSIZE];
+
 		// TODO
 		// encapulate/encode the payload of the message
 		
-		if (true) {
-		   throw new RuntimeException("not yet implemented");
-		}
+		byte length = (byte) payload.length;
+		for(int i = payload.length; i > 0; i--)
+			encoded[i]=payload[i-1];
+		encoded[0] = length;
 		
 		return encoded;
-		
+
 	}
 
 	public void decapsulate(byte[] received) {
 
 		// TODO
 		// decapsulate data in received and put in payload
+		int length = received[0];		
+		if (length > 127) return;
 		
-	   throw new RuntimeException("not yet implemented");
-		
+		payload = new byte[length];
+		for(int i = 0; i < length; i++) 
+			payload[i] = received[i+1];
 	}
 }
