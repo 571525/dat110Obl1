@@ -22,7 +22,7 @@ public class DisplayDevice {
 		
 		displayserver.run();
 		
-		displayserver.stop();//
+		displayserver.stop();
 		
 		System.out.println("Display server stopping ...");
 		
