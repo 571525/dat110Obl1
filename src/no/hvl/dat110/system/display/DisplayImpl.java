@@ -11,8 +11,8 @@ public class DisplayImpl implements RPCImpl {
 	
 	public byte[] invoke(byte[] request) {
 		
-		byte[] reply;
 		byte rpcid;
+		byte[] reply;
 		
 		// TODO: 
 		// implement unmarshalling, call, and marshall for write RPC method
@@ -20,14 +20,13 @@ public class DisplayImpl implements RPCImpl {
 		
 		RPCUtils.unmarshallVoid(request);
 		
+		String message = write();	//Skjønner fortsatt ikke helt hvordan vi skal "calle" write
+									//Er ingen String vi kan bruke
 		
-		RPCUtils.marshallString(rpcid, str);
+		rpcid = request[0];
 		
-		//
+		reply = RPCUtils.marshallString(rpcid, str);
 		
-		if (true) {
-			  throw new RuntimeException("not yet implemented");
-		}
 		
 		return reply;
 	}
