@@ -20,12 +20,13 @@ public class DisplayImpl implements RPCImpl {
 		
 		RPCUtils.unmarshallVoid(request);
 		
-		String message = write();	//Skjønner fortsatt ikke helt hvordan vi skal "calle" write
-									//Er ingen String vi kan bruke
+		String message = new String(request);  //from bytes to String
 		
+		write(message);  //Kanskje noe sånt?
+		     
 		rpcid = request[0];
 		
-		reply = RPCUtils.marshallString(rpcid, str);
+		reply = RPCUtils.marshallString(rpcid, message);
 		
 		
 		return reply;
