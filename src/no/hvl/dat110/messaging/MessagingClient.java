@@ -26,10 +26,8 @@ public class MessagingClient {
 		try {
 			clientSocket = new Socket(server,port);
 			connection = new Connection(clientSocket);
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ex) {
+			System.out.println("Connect: " + ex);
 		}
 
 		return connection;

@@ -35,10 +35,8 @@ public class Connection {
 		// TODO - done
 		// encapsulate the data contained in the message and write to the output stream
 		try {
-			DataOutputStream out = new DataOutputStream(outStream);
-			out.write(message.encapsulate());
-			out.flush();
-			out.close();
+			outStream.write(message.encapsulate());
+			outStream.flush();
 		} catch (IOException ex) {
 			System.out.println("Send: " + ex.getMessage());
 		}
@@ -52,21 +50,12 @@ public class Connection {
 		// TODO - done
 		// read a segment from the input stream and decapsulate into message
 		try {
-			BufferedReader in = new BufferedReader(new InputStreamReader(inStream));
-			
-			int i = 0;
-			while (in.ready()) {
-				byte next = (byte) in.read();
-				if (next == -1)
-					break; // Simple test to see if we've reached the end of the stream
-				recvbuf[i] = next;
-				i++;
-			}
-			in.close();
+			for(int i = 0; i < MessageConfig.SEGMENTSIZE; i++) 
+				recvbuf[i] = inStream.readByte();
 			message.decapsulate(recvbuf);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (IOException ex) {
+			System.out.println("Receive: " + ex.getMessage());
 		}
 		return message;
 	}
