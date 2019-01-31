@@ -15,8 +15,8 @@ public class Message {
 	 */
 	public Message(byte[] payload) {	
 		if (payload.length >= MessageConfig.SEGMENTSIZE) {
-			this.payload = new byte[128];
-			for (int i = 0; i < 127; i++)
+			this.payload = new byte[127];
+			for (int i = 0; i < this.payload.length; i++)
 				this.payload[i] = payload[i];
 		} else {
 			this.payload = payload;
