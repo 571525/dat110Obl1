@@ -19,7 +19,7 @@ public class DisplayImpl implements RPCImpl {
 		// look at how this is done int he SensorImpl for the read method
 		
 		RPCUtils.unmarshallVoid(request);
-		
+		//
 		
 		
 		
