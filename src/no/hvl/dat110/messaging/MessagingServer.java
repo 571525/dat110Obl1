@@ -26,13 +26,14 @@ public class MessagingServer {
 
 		Connection connection = null;
 
-		// TODO
+		// TODO - done
 		// accept TCP connection on welcome socket and create connection
-
-		if (true) {
-			throw new RuntimeException("not yet implemented");
+		try {
+			connection = new Connection(welcomeSocket.accept());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
+		
 		return connection;
 
 	}

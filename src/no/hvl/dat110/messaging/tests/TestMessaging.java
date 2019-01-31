@@ -20,13 +20,12 @@ public class TestMessaging {
 		byte[] clientsent = { 1, 2, 3, 4, 5 };
 
 		Thread server = new Thread() {
-	
+
 			public void run() {
 
 				System.out.println("Messaging server - start");
-				
-				MessagingServer server = 
-						new MessagingServer(MessageConfig.MESSAGINGPORT);
+
+				MessagingServer server = new MessagingServer(MessageConfig.MESSAGINGPORT);
 
 				Connection connection = server.accept();
 
@@ -46,18 +45,16 @@ public class TestMessaging {
 
 				assertTrue(Arrays.equals(clientsent, serverreceived));
 
-
 			}
 		};
 
 		Thread client = new Thread() {
-			
+
 			public void run() {
 
 				System.out.println("Messaging client - start");
 
-				MessagingClient client = 
-						new MessagingClient(MessageConfig.MESSAGINGHOST, MessageConfig.MESSAGINGPORT);
+				MessagingClient client = new MessagingClient(MessageConfig.MESSAGINGHOST, MessageConfig.MESSAGINGPORT);
 
 				Connection connection = client.connect();
 
@@ -67,7 +64,7 @@ public class TestMessaging {
 
 				Message message2 = connection.receive();
 
-			    byte[] clientreceived = message2.getData();
+				byte[] clientreceived = message2.getData();
 
 				connection.close();
 
