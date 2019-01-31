@@ -21,7 +21,9 @@ public class DisplayImpl implements RPCImpl {
 		RPCUtils.unmarshallVoid(request);
 		
 		
+		RPCUtils.marshallString(rpcid, str);
 		
+		//
 		
 		if (true) {
 			  throw new RuntimeException("not yet implemented");
