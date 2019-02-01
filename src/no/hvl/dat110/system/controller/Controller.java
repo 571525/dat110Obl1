@@ -27,6 +27,13 @@ public class Controller  {
 		// create RPC clients for display device and sensor device
 		// register RPC methods in the RPC layer
 		
+		//Display and sensor object
+		display = new Display();
+		sensor = new Sensor();
+		
+		
+		
+		
 		if (true) {
 			  throw new RuntimeException("not yet implemented");
 		}

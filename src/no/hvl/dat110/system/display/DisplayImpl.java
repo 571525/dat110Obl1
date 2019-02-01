@@ -14,7 +14,7 @@ public class DisplayImpl implements RPCImpl {
 		byte rpcid;
 		byte[] reply;
 		
-		// TODO: 
+		// TODO: - done
 		// implement unmarshalling, call, and marshall for write RPC method
 		// look at how this is done int he SensorImpl for the read method
 		
@@ -22,7 +22,7 @@ public class DisplayImpl implements RPCImpl {
 		
 		String message = new String(request);  //from bytes to String
 		
-		write(message);  //Kanskje noe sånt?
+		write(message);  //call write
 		     
 		rpcid = request[0];
 		
