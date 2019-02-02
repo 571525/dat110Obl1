@@ -1,6 +1,8 @@
 package no.hvl.dat110.system.controller;
 
+import no.hvl.dat110.messaging.MessageConfig;
 import no.hvl.dat110.rpc.RPCClient;
+import no.hvl.dat110.rpc.RPCServer;
 import no.hvl.dat110.rpc.RPCServerStopStub;
 
 public class Controller  {
@@ -24,7 +26,7 @@ public class Controller  {
 		
 		// TODO
 		// create display and sensor object
-		// create RPC clients for display device and sensor device
+		// create RPC clients for display device and sensor device - WTF ER DET DE HAR GJORT OVER DA?!
 		// register RPC methods in the RPC layer
 		
 		//Display and sensor object
@@ -33,15 +35,18 @@ public class Controller  {
 		
 		displayclient.register(display);
 		sensorclient.register(sensor);
-		
+
+			
 		// register stop methods in the RPC middleware
 		displayclient.register(stopdisplay);
 		sensorclient.register(stopsensor);
 		
 		// TODO:
 		// loop while reading from sensor and write to display via RPC
-		
-		
+		for(int i = 0; i < N; i++) {
+			int temp = sensor.read();
+			display.write(""+temp);
+		}
 		
 		stopdisplay.stop();
 		stopsensor.stop();

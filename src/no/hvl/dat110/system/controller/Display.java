@@ -10,7 +10,10 @@ public class Display extends RPCStub {
 
 		// TODO
 		// implement marshalling, call and unmarshalling for write RPC method
-
-		throw new RuntimeException("not yet implemented");
+		RPCClient display = this.rmiclient;
+		byte[] str = RPCUtils.marshallString(RPCID, message);
+		byte[] reply = display.call(str);
+		String replystr = RPCUtils.unmarshallString(reply);
+		System.out.println("Controller: " + replystr);
 	}
 }
