@@ -51,6 +51,10 @@ public class Controller  {
 		while(i < N) {
 			int temp = sensor.read();
 			display.write(temp+"");
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+			}
 			i++;
 		}
 		

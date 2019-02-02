@@ -23,10 +23,10 @@ public class RPCUtils {
 
 	public static String unmarshallString(byte[] data) {
 
-		String decoded = "";
+		String decoded;
 
 		// TODO: unmarshall String contained in data into decoded
-
+		decoded = "";
 		for (int i = 1; i < data.length; i++)
 			decoded += (char) data[i];
 
@@ -39,7 +39,7 @@ public class RPCUtils {
 
 		// TODO: marshall RPC identifier in case of void type
 
-		encoded = new byte[1];
+		encoded = new byte[MessageConfig.SEGMENTSIZE];
 		encoded[0] = rpcid;
 
 		return encoded;
@@ -49,11 +49,7 @@ public class RPCUtils {
 	public static void unmarshallVoid(byte[] data) {
 
 		// TODO: unmarshall void type
-		if (data != null) {
-			for (int i = 1; i < data.length; i++) {
-				data[i - 1] = data[i];
-			}
-		}
+		data = new byte[MessageConfig.SEGMENTSIZE - 1];
 	}
 
 	public static byte[] marshallBoolean(byte rpcid, boolean b) {
