@@ -1,7 +1,6 @@
 package no.hvl.dat110.system.controller;
 
 import no.hvl.dat110.rpc.*;
-import no.hvl.dat110.system.sensor.SensorDevice;
 
 public class Sensor extends RPCStub {
 
@@ -13,7 +12,6 @@ public class Sensor extends RPCStub {
 		
 		// TODO
 		// implement marshalling, call and unmarshalling for read RPC method
-
 		byte[] marsh = RPCUtils.marshallVoid(RPCID);
 		byte[] tempread = rmiclient.call(marsh);
 		temp = RPCUtils.unmarshallInteger(tempread);

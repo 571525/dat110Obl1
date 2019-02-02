@@ -51,6 +51,7 @@ public class Controller  {
 		while(i < N) {
 			int temp = sensor.read();
 			display.write(temp+"");
+			i++;
 		}
 		
 		stopdisplay.stop();
