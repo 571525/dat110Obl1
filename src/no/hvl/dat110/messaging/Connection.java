@@ -55,7 +55,7 @@ public class Connection {
 			message.decapsulate(recvbuf);
 
 		} catch (IOException ex) {
-			System.out.println("Receive: " + ex.getMessage());
+			System.out.println(ex.getMessage());
 		}
 		return message;
 	}

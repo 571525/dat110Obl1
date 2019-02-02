@@ -31,12 +31,8 @@ public class Controller  {
 		display = new Display();
 		sensor = new Sensor();
 		
-		
-		
-		
-		if (true) {
-			  throw new RuntimeException("not yet implemented");
-		}
+		displayclient.register(display);
+		sensorclient.register(sensor);
 		
 		// register stop methods in the RPC middleware
 		displayclient.register(stopdisplay);
@@ -45,9 +41,7 @@ public class Controller  {
 		// TODO:
 		// loop while reading from sensor and write to display via RPC
 		
-		if (true) {
-			  throw new RuntimeException("not yet implemented");
-			}
+		
 		
 		stopdisplay.stop();
 		stopsensor.stop();

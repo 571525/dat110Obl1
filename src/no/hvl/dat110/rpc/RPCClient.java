@@ -18,15 +18,13 @@ public class RPCClient {
 	
 	public void connect() {
 		
-		// TODO: connect using the underlying messaging layer connection
-		
+		// TODO: connect using the underlying messaging layer connection	
 		connection = msgclient.connect();
 	}
 	
 	public void disconnect() {
 		
-		// TODO: disconnect/close the underlying messaging connection
-		
+		// TODO: disconnect/close the underlying messaging connection	
 		connection.close();
 	}
 	
@@ -43,12 +41,12 @@ public class RPCClient {
 		rpctreply is the rpcreply to be unmarshalled by the client-stub
 		
 		*/
-		Message msgsend = new Message(rpcrequest);
-		connection.send(msgsend);
+		
+		Message msg = new Message(rpcrequest);
+		connection.send(msg);
 		rpcreply = connection.receive().getData();
 		
 		return rpcreply;
-		
 	}
 
 }

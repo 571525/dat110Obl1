@@ -1,6 +1,8 @@
-	package no.hvl.dat110.rpc;
+package no.hvl.dat110.rpc;
 
 import java.util.Arrays;
+
+import no.hvl.dat110.messaging.MessageConfig;
 
 public class RPCUtils {
 
@@ -19,14 +21,11 @@ public class RPCUtils {
 		return encoded;
 	}
 
-	@SuppressWarnings("static-access")
 	public static String unmarshallString(byte[] data) {
 
 		String decoded = "";
 
 		// TODO: unmarshall String contained in data into decoded
-
-		char[] strchar = new char[data.length - 1];
 
 		for (int i = 1; i < data.length; i++)
 			decoded += (char) data[i];
@@ -40,9 +39,8 @@ public class RPCUtils {
 
 		// TODO: marshall RPC identifier in case of void type
 
-		if (true) {
-			throw new RuntimeException("not yet implemented");
-		}
+		encoded = new byte[1];
+		encoded[0] = rpcid;
 
 		return encoded;
 
@@ -50,7 +48,8 @@ public class RPCUtils {
 
 	public static void unmarshallVoid(byte[] data) {
 
-		// TODO: unmarshall void type
+		// TODO: unmarshall void type		
+		return;
 	}
 
 	public static byte[] marshallBoolean(byte rpcid, boolean b) {
@@ -80,23 +79,22 @@ public class RPCUtils {
 
 		// TODO: marshall RPC identifier and string into byte array
 
-		// tror ikke dette funker helt 100, men vet det er noe i denne stilen
 		encoded = new byte[5];
 		encoded[0] = rpcid;
-		encoded[1] = (byte) ((x >> 0) & 0xff);
-		encoded[2] = (byte) ((x >> 8) & 0xff);
-		encoded[3] = (byte) ((x >> 16) & 0xff);
-		encoded[4] = (byte) ((x >> 24) & 0xff);
+		encoded[1] = (byte) ((x >> 24) & 0xff);
+		encoded[2] = (byte) ((x >> 16) & 0xff);
+		encoded[3] = (byte) ((x >> 8) & 0xff);
+		encoded[4] = (byte) ((x >> 0) & 0xff);
 
 		return encoded;
 	}
+
 	public static int unmarshallInteger(byte[] data) {
 
 		int decoded = 0;
 
 		// TODO: unmarshall integer contained in data
 
-		// tror ikke dette funker helt 100, men vet det er noe i denne stilen
 		decoded = (data[1] << 24) & 0xff000000 | (data[2] << 16) & 0x00ff0000 | (data[3] << 8) & 0x0000ff00
 				| (data[4] << 0) & 0x000000ff;
 
