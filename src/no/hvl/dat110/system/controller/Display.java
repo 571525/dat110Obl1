@@ -13,6 +13,6 @@ public class Display extends RPCStub {
 		byte[] str = RPCUtils.marshallString(RPCID, message);
 		byte[] reply = rmiclient.call(str);
 		String replystr = RPCUtils.unmarshallString(reply);
-		System.out.println("Controller: " + replystr);
+		System.out.println("Controller:" + replystr);
 	}
 }

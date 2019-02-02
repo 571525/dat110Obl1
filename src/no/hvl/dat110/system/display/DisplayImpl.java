@@ -17,10 +17,8 @@ public class DisplayImpl implements RPCImpl {
 		// TODO: - done
 		// implement unmarshalling, call, and marshall for write RPC method
 		// look at how this is done int he SensorImpl for the read method
-		
-		RPCUtils.unmarshallVoid(request);
-		
-		String message = new String(request);  //from bytes to String
+				
+		String message = RPCUtils.unmarshallString(request);  //from bytes to String
 		
 		write(message);  //call write
 		     
