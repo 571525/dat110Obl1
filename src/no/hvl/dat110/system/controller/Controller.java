@@ -26,26 +26,31 @@ public class Controller  {
 		
 		// TODO
 		// create display and sensor object
-		// create RPC clients for display device and sensor device - WTF ER DET DE HAR GJORT OVER DA?!
+		// create RPC clients (SERVERS?!?!) for display device and sensor device - WTF ER DET DE HAR GJORT OVER DA?!
 		// register RPC methods in the RPC layer
 		
 		//Display and sensor object
 		display = new Display();
 		sensor = new Sensor();
+				
+		//create rpc clients
+		displayclient.connect();
+		sensorclient.connect();
 		
+		//register methods i rpc layer
 		displayclient.register(display);
 		sensorclient.register(sensor);
-
-			
+		
 		// register stop methods in the RPC middleware
 		displayclient.register(stopdisplay);
 		sensorclient.register(stopsensor);
 		
 		// TODO:
 		// loop while reading from sensor and write to display via RPC
-		for(int i = 0; i < N; i++) {
+		int i = 0;
+		while(i < N) {
 			int temp = sensor.read();
-			display.write(""+temp);
+			display.write(temp+"");
 		}
 		
 		stopdisplay.stop();

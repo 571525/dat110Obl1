@@ -17,7 +17,7 @@ public class SensorDevice {
 		
 		sensorserver.run();
 		
-		sensorserver.stop();
+//		sensorserver.stop();
 		
 		System.out.println("Sensor server stopping ...");
 		
