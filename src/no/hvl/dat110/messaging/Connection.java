@@ -52,10 +52,11 @@ public class Connection {
 		try {
 			for(int i = 0; i < MessageConfig.SEGMENTSIZE; i++) 
 				recvbuf[i] = inStream.readByte();
+			
 			message.decapsulate(recvbuf);
 
 		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
+		ex.getMessage();
 		}
 		return message;
 	}
